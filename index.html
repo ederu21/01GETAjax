@@ -13,8 +13,9 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="css/style.css">
-
-
+	
+	<!-- Importacion de Font Awesome -->
+	<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -44,8 +45,30 @@
 		</tr>
 		<tr>
 			<td>Genero</td>
-			<td><input type="text" id="txtGenero" class="form-control"></td>
+			<td><select id="Select" class="form-control"></select></td>
 		</tr>
+		
+	</table>
+
+	<div id="btnInsert" class="text-right"> <a href="" class="btn btn-primary"><i class="fa fa-plus"></i>Insertar Registro</a></div>
+	<br>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td class="w50">ID</td>
+				<td>NOMBRE</td>
+				<td class="w50">ACTUALIZAR</td>
+				<td class="w50">ELIMINAR</td>
+			</tr>
+		</thead>
+		<tbody id="tblRegistros">
+			<!-- <tr>
+				<td>3</td>
+				<td>Eder</td>
+				<td class="text-center"><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+				<td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
+			</tr> -->
+		</tbody>
 	</table>
 
 
