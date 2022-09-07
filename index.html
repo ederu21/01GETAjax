@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Ajax 01</title>
@@ -8,80 +9,82 @@
 	<script src="js/lib/jquery-2.1.4.min.js"></script>
 
 	<script src="js/lib/TweenMax.min.js"></script>
-	
+
 	<!-- Importacion del Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<!-- Importacion de Font Awesome -->
 	<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
 </head>
+
 <body>
 
 
 
-<div class="container">
-	
-	<h1>Datos de: <small id="lblNombre">( )</small></h1>
-	<hr>
+	<div class="container">
 
-	<table class="table table-striped">
-		<!-- <tr>
+		<h1>Datos de: <small id="lblNombre">( )</small></h1>
+		<hr>
+
+		<table class="table table-striped">
+			<!-- <tr>
 			<td>Foto</td>
 			<td><img id="picFoto" src="http://placehold.it/32x32" class="img-thumbnail" alt="Foto"></td>
 		</tr> -->
-		<tr>
-			<td>Nombre</td>
-			<td><input type="text" id="txtNombre" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Dirección</td>
-			<td><input type="text" id="txtDireccion" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Teléfono</td>
-			<td><input type="text" id="txtTelefono" class="form-control"></td>
-		</tr>
-		<tr>
-			<td>Pais</td>
-			<td><select id="Select" class="form-control"></select></td>
-		</tr>
-		<tr>
-			<td>Languages</td>
-			<td><select id="selectLanguages" class="form-control"></select></td>
-		</tr>
-	</table>
-
-	<div id="btnInsert" class="text-right"> <a href="" class="btn btn-primary"><i class="fa fa-plus"></i>Insertar Registro</a></div>
-	<br>
-	<table class="table table-striped">
-		<thead>
 			<tr>
-				<td class="w50">ID</td>
-				<td>NOMBRE</td>
-				<td>COORDENADAS</td>
-				<td class="w50">ACTUALIZAR</td>
-				<td class="w50">ELIMINAR</td>
+				<td>Nombre</td>
+				<td><input type="text" id="txtNombre" class="form-control"></td>
 			</tr>
-		</thead>
-		<tbody id="tblRegistros">
-			<!-- <tr>
+			<tr>
+				<td>Dirección</td>
+				<td><input type="text" id="txtDireccion" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Teléfono</td>
+				<td><input type="text" id="txtTelefono" class="form-control"></td>
+			</tr>
+			<tr>
+				<td>Pais</td>
+				<td><select id="Select" class="form-control"></select></td>
+			</tr>
+			<tr>
+				<td>Languages</td>
+				<td><select id="selectLanguages" class="form-control"></select></td>
+			</tr>
+		</table>
+
+		<div id="btnInsert" class="text-right"> <a href="" class="btn btn-primary"><i class="fa fa-plus"></i>Insertar
+				Registro</a></div>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td class="w50">ID</td>
+					<td>NOMBRE</td>
+					<td>COORDENADAS</td>
+					<td class="w50">ACTUALIZAR</td>
+					<td class="w50">ELIMINAR</td>
+				</tr>
+			</thead>
+			<tbody id="tblRegistros">
+				<!-- <tr>
 				<td>3</td>
 				<td>Eder</td>
 				<td class="text-center"><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
 				<td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>
 			</tr> -->
-		</tbody>
-	</table>
+			</tbody>
+		</table>
 
 
 
-</div>
+	</div>
 
 
 
-<script src="js/ajax.js"></script>
+	<script src="js/ajax.js"></script>
 
 
 
@@ -89,4 +92,5 @@
 
 
 </body>
+
 </html>

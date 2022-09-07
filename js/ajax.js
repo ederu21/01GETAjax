@@ -73,11 +73,11 @@
         console.log("Has seleccionado: - " + $("#Select option:selected").val() + '--' + seleccion);
         $.ajax({
             type: 'GET',
-            url: 'https://restcountries.com/v3.1/name/'+ seleccion,
+            url: 'https://restcountries.com/v3.1/name/' + seleccion,
             //'https://5d6d-2806-106e-15-70f9-a4c3-f01-bc33-c341.ngrok.io/MWDispatcher-2.0/toa/solicitarAjusteVelocidad',
             dataType: 'json'
         }).done((data) => {
-            console.log('data:::'+data);
+            console.log('data:::' + data);
         }).fail(() => {
             console.log("Fallo");
         }
