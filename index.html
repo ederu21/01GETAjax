@@ -21,8 +21,6 @@
 
 <body>
 
-
-
 	<div class="container">
 
 		<h1>Datos de: <small id="lblNombre">( )</small></h1>
@@ -47,18 +45,22 @@
 			</tr>
 			<tr>
 				<td>Pais</td>
-				<td><select id="Select" class="form-control"></select></td>
+				<td><select id="Select" class="form-control">
+					<option value="0" selected disabled hidden>Seleccione un Pais</option>
+				</select></td>
 			</tr>
 			<tr>
-				<td>Languages</td>
-				<td><select id="selectLanguages" class="form-control"></select></td>
+				<td>Fronteras</td>
+				<td><select id="selectLanguages" class="form-control">
+					<option value="0" selected disabled hidden>Seleccione una frontera</option>
+				</select></td>
 			</tr>
 		</table>
 
-		<div id="btnInsert" class="text-right"> <a href="" class="btn btn-primary"><i class="fa fa-plus"></i>Insertar
-				Registro</a></div>
-		<br>
-		<table class="table table-striped">
+		<div id="btnInsert" class="btn btn-primary justify-content-right"> <i class="fa fa-plus"></i> Mostrar Registros</div>
+		<br><br>
+		<!-- style="display:none;" -->
+		<table id='tableData' class="table table-striped" >
 			<thead>
 				<tr>
 					<td class="w50">ID</td>

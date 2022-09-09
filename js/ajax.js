@@ -24,35 +24,20 @@
             $("#Select").append('<option value=' + (parseInt(key) + 1) + '>' + registro.name.common + '</option>');
         });
 
-        let datos = data;
-        for (let i = 0; i < datos.length; i++) {
-            let dato = datos[i];
-            let latlng = '';
-            for (let j = 0; j < dato.latlng.length; j++) {
-                latlng += '<span class="label label-primary">' + dato.latlng[j] + '</span> ';
-            }
+        data.forEach((registro, key) => {
             let content = "";
             content += '<tr>';
-            content += '    <td>' + (i + 1) + '</td>';
-            content += '    <td>' + dato.name.common + '</td>';
-            content += '    <td>' + latlng + '</td>';
+            content += '    <td>' + (parseInt(key) + 1) + '</td>';
+            content += '    <td>' + registro.name.common + '</td>';
             content += '    <td class="text-center"><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>';
             content += '    <td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>';
             content += '</tr>';
 
             $('#tblRegistros').append(content);
-        }
-        /* data.forEach((registro,key)=>{
-            let content = "";
-            content += '<tr>';
-            content += '    <td>'+(parseInt(key)+1)+'</td>';
-            content += '    <td>'+registro.name.common+'</td>';
-            content += '    <td class="text-center"><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>';
-            content += '    <td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>';
-            content += '</tr>';
+        })
 
-            $('#tblRegistros').append(content);
-        }) */
+
+        /*  */
 
     }
     ).fail(() => {
@@ -63,7 +48,9 @@
     })
 
     const llamarFuncion = () => {
-        alert('Presionado llamarFuncion');
+        /* alert('Presionado llamarFuncion'); */
+        $("#tableData").css("display", "block");
+        
     }
 
     $("#btnInsert").on("click", llamarFuncion);
@@ -77,6 +64,44 @@
             //'https://5d6d-2806-106e-15-70f9-a4c3-f01-bc33-c341.ngrok.io/MWDispatcher-2.0/toa/solicitarAjusteVelocidad',
             dataType: 'json'
         }).done((data) => {
+
+            let datos = data;
+            for (let i = 0; i < datos.length; i++) {
+                let dato = datos[i];
+                let latlng = '';
+                if (dato.borders != undefined) {
+                    $('#selectLanguages').empty();                    
+                    for (let j = 0; j < dato.borders.length; j++) {
+                        /* latlng += '<span class="label label-primary">' + dato.latlng[j] + '</span> '; */
+                        //latlng = '<option value="' + (j + 1) + '">' + dato.latlng[j] + '</option>';
+                        //console.log('latlng::::'+latlng);
+                        //$('#selectLanguages').append(latlng);                        
+                        $('#selectLanguages').append(
+                            $("<option>", {
+                                value: (j + 1),
+                                text: dato.borders[j]
+                            }));
+                    }
+                    //$("#selectLanguages").attr('disabled','false');
+                    $('#selectLanguages').removeAttr('disabled');
+                } else {
+                    $('#selectLanguages').empty();
+                    $("#selectLanguages").attr('disabled','true');
+                    latlng = '<option value="0">No existen Paises Colindantes</option>';
+                    $('#selectLanguages').append(latlng);
+                }
+                /* let content = "";
+                content += '<tr>';
+                content += '    <td>' + (i + 1) + '</td>';
+                content += '    <td>' + dato.name.common + '</td>';
+                content += '    <td>' + latlng + '</td>';
+                content += '    <td class="text-center"><a href="" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>';
+                content += '    <td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a></td>';
+                content += '</tr>';
+
+                $('#tblRegistros').append(content); */
+            }
+
             console.log('data:::' + data);
         }).fail(() => {
             console.log("Fallo");

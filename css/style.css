@@ -5,3 +5,12 @@ img{
 .w50{
 	width: 50px;
 }
+
+#tableData{
+display :none;
+}
+
+/* #btnInsert
+{
+	text-align: right;
+} */
