@@ -50,7 +50,7 @@
     const llamarFuncion = () => {
         /* alert('Presionado llamarFuncion'); */
         $("#tableData").css("display", "block");
-        
+
     }
 
     $("#btnInsert").on("click", llamarFuncion);
@@ -66,11 +66,16 @@
         }).done((data) => {
 
             let datos = data;
+            let paresPpal = pares(datos[0].borders);
+            console.log('paresPpal::::' + paresPpal);
+
+            let guionesP= guiones(datos[0].status);
+            console.log('guiones::::' + guionesP);
             for (let i = 0; i < datos.length; i++) {
                 let dato = datos[i];
                 let latlng = '';
                 if (dato.borders != undefined) {
-                    $('#selectLanguages').empty();                    
+                    $('#selectLanguages').empty();
                     for (let j = 0; j < dato.borders.length; j++) {
                         /* latlng += '<span class="label label-primary">' + dato.latlng[j] + '</span> '; */
                         //latlng = '<option value="' + (j + 1) + '">' + dato.latlng[j] + '</option>';
@@ -86,7 +91,7 @@
                     $('#selectLanguages').removeAttr('disabled');
                 } else {
                     $('#selectLanguages').empty();
-                    $("#selectLanguages").attr('disabled','true');
+                    $("#selectLanguages").attr('disabled', 'true');
                     latlng = '<option value="0">No existen Paises Colindantes</option>';
                     $('#selectLanguages').append(latlng);
                 }
@@ -110,4 +115,33 @@
             console.log('Completo');
         });
     });
+
+     pares=(pares)=>{
+        if (pares == undefined || pares == null) {
+            pares = '';
+        }
+        pares = pares.toString();
+        //console.log(pares);
+        pares.replace(' ','');
+        //pares.replace(/ /g, '');
+        /* if (!pares.includes(',')) {
+            pares += ',';
+        } */
+        return pares.split(',');
+    }
+
+    guiones=(guiones)=>{
+            if(guiones == undefined || guiones == null ){
+                guiones = '';
+            }
+            guiones.replace(' ','');
+            if(!guiones.includes('-')){
+                guiones += '-';
+            }
+              return guiones.split('-');
+          }
+
+    var myStr = $(".original").text();
+    var trimStr = $.trim(myStr);
+    $(".trimmed").html(trimStr);
 })();
