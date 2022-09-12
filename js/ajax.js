@@ -66,11 +66,13 @@
         }).done((data) => {
 
             let datos = data;
-            let paresPpal = pares(datos[0].borders);
-            console.log('paresPpal::::' + paresPpal);
-
-            let guionesP= guiones(datos[0].status);
-            console.log('guiones::::' + guionesP);
+            datos[0].status = '3  1-    2';
+            let paresPpal = pares(datos[0].status);
+            console.log('paresPpal0::::' + paresPpal[0]);
+            console.log('paresPpal1::::' + paresPpal[1]);
+            //datos[0].borders= ['3  1-    2','  QW'];
+            let modemsP = modems(datos[0].borders);
+            console.log('modems::::' + modemsP);
             for (let i = 0; i < datos.length; i++) {
                 let dato = datos[i];
                 let latlng = '';
@@ -116,30 +118,24 @@
         });
     });
 
-     pares=(pares)=>{
-        if (pares == undefined || pares == null) {
-            pares = '';
+    pares = (par) => {
+        if (par == undefined || par == null) {
+            par = '';
         }
-        pares = pares.toString();
-        //console.log(pares);
-        pares.replace(' ','');
-        //pares.replace(/ /g, '');
-        /* if (!pares.includes(',')) {
-            pares += ',';
-        } */
-        return pares.split(',');
+        //pares= '3  1-    2';
+       if (!par.includes('-')) {
+            par += '-';
+        }
+        return par.replace(/\s+/g, '').split('-');
     }
 
-    guiones=(guiones)=>{
-            if(guiones == undefined || guiones == null ){
-                guiones = '';
-            }
-            guiones.replace(' ','');
-            if(!guiones.includes('-')){
-                guiones += '-';
-            }
-              return guiones.split('-');
-          }
+    modems = (modems) => {
+        if (modems == undefined || modems == null) {
+            modems = '';
+        }
+        //modems = ['3  1-    2','  QW'];
+        return modems.toString().replace(/ /g, "");
+    }
 
     var myStr = $(".original").text();
     var trimStr = $.trim(myStr);

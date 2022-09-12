@@ -46,21 +46,22 @@
 			<tr>
 				<td>Pais</td>
 				<td><select id="Select" class="form-control">
-					<option value="0" selected disabled hidden>Seleccione un Pais</option>
-				</select></td>
+						<option value="0" selected disabled hidden>Seleccione un Pais</option>
+					</select></td>
 			</tr>
 			<tr>
 				<td>Fronteras</td>
 				<td><select id="selectLanguages" class="form-control">
-					<option value="0" selected disabled hidden>Seleccione una frontera</option>
-				</select></td>
+						<option value="0" selected disabled hidden>Seleccione una frontera</option>
+					</select></td>
 			</tr>
 		</table>
 
-		<div id="btnInsert" class="btn btn-primary justify-content-right"> <i class="fa fa-plus"></i> Mostrar Registros</div>
+		<div id="btnInsert" class="btn btn-primary justify-content-right"> <i class="fa fa-plus"></i> Mostrar Registros
+		</div>
 		<br><br>
 		<!-- style="display:none;" -->
-		<table id='tableData' class="table table-striped" >
+		<table id='tableData' class="table table-striped">
 			<thead>
 				<tr>
 					<td class="w50">ID</td>
@@ -84,17 +85,42 @@
 
 	</div>
 	<h3>Original String</h3>
-    <pre class="original">      Paragraph of text with       multiple    white   spaces before and after.       </pre>
-    <br>
-    <h3>Trimmed String</h3>
-    <pre class="trimmed"></pre>
+	<pre class="original">      Paragraph of text with       multiple    white   spaces before and after.       </pre>
+	<br>
+	<h3>Trimmed String</h3>
+	<pre class="trimmed"></pre>
 
+	<div id="prueba"></div>
+	<div class="prueba2">
+		<article>
+			<p>Hello! World!</p>
+		</article>
+	</div>
+
+	<span></span>
 
 	<script src="js/ajax.js"></script>
 
 
 
+	<script>
+		$(document).on('ready',()=>{
+			//Por Id
+			$('#prueba').text('<p>Hello<p>');
+			//Por clase
+			$('.prueba2').prepend('<strong>HelloBefore</strong>');
+			$('.prueba2').append('<strong>HelloAfter</strong>');
 
+			$('div.prueba2').css({
+				'background-color':'gray',
+			})
+
+			//a elementos anidados en especifico
+			$('div.prueba2 article p').after('<i>Selectores</i>');
+			//varios tags
+			$('div#prueba, span').after('<i>por id</i>');
+		})
+	</script>
 
 
 </body>
