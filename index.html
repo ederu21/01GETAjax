@@ -10,11 +10,16 @@
 
 	<script src="js/lib/TweenMax.min.js"></script>
 
+	<!-- Importacion de Spinner -->
+	<script src="js/lib/jquery.spin.js"></script>
 	<!-- Importacion del Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
+	<!-- Estilos Personalizados -->
 	<link rel="stylesheet" href="css/style.css">
 
+	<!-- Imortacion de Sweet Alert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- Importacion de Font Awesome -->
 	<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
 </head>
@@ -57,8 +62,11 @@
 			</tr>
 		</table>
 
-		<div id="btnInsert" class="btn btn-primary justify-content-right"> <i class="fa fa-plus"></i> Mostrar Registros
+		<div id="btnInsert" class="btn btn-primary justify-content-right"> <i class="fa fa-plus"></i> Mostrar/Ocultar
+			Registros
 		</div>
+		<i id="spiner" class="fa fa-refresh fa-spin" style="color:blue;display:none;"></i>
+		<div id='status'></div>
 		<br><br>
 		<!-- style="display:none;" -->
 		<table id='tableData' class="table table-striped">
@@ -80,9 +88,6 @@
 			</tr> -->
 			</tbody>
 		</table>
-
-
-
 	</div>
 	<h3>Original String</h3>
 	<pre class="original">      Paragraph of text with       multiple    white   spaces before and after.       </pre>
@@ -101,10 +106,23 @@
 
 	<script src="js/ajax.js"></script>
 
+	<div class="ejemplo1 cl1">
+		<p></p>
+	</div>
 
+	<div class="ejemplo1">
+		<span></span>
+	</div>
+
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 
 	<script>
-		$(document).on('ready',()=>{
+		$(document).on('ready', () => {
 			//Por Id
 			$('#prueba').text('<p>Hello<p>');
 			//Por clase
@@ -112,13 +130,36 @@
 			$('.prueba2').append('<strong>HelloAfter</strong>');
 
 			$('div.prueba2').css({
-				'background-color':'gray',
+				'background-color': 'gray',
 			})
 
 			//a elementos anidados en especifico
 			$('div.prueba2 article p').after('<i>Selectores</i>');
 			//varios tags
 			$('div#prueba, span').after('<i>por id</i>');
+
+			let selection = $('.ejemplo1');
+
+			selection.length > 0 ?
+				console.log('selection true:::' + selection.length) :
+				console.log('selection false:::' + selection.length);
+
+			selection.not('.cl1').text('Este Elemento no tiene clas cl1');
+			selection.has('p').text('Este Elemento tiene un elemento <p> dentro');
+
+			selection.first().html('<p>Seañadio un append al primer elemento de selection</p>');
+
+			$('li').first().text('Esta es la primer viñeta');
+			$('li').eq(2).html('<strong>Tercer elemento de las viñetas </strong>');
+
+			//Obteniendo valores por html
+			let obtained = $('#prueba').html();
+			console.log('obtained::' + obtained);
+
+			//Obteniendo valores por attr
+			console.log('id del elemento::' + $('#prueba').attr('id'));
+			//Asignar un atributo a un elemento
+			$('#prueba').attr('class', 'ejemplo');
 		})
 	</script>
 

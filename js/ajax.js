@@ -1,5 +1,9 @@
 (function () {
-
+    swal("Texto del mensaje",{
+        buttons: true,
+        timer: 10000,
+        background-color: rgba(43, 165, 137, 0.45),
+      });
     $.ajax({
         type: 'GET',
         url: 'https://restcountries.com/v3.1/all',
@@ -35,9 +39,7 @@
 
             $('#tblRegistros').append(content);
         })
-
-
-        /*  */
+       
 
     }
     ).fail(() => {
@@ -49,8 +51,11 @@
 
     const llamarFuncion = () => {
         /* alert('Presionado llamarFuncion'); */
-        $("#tableData").css("display", "block");
+    ($('#tableData').css('display') == 'none')?
+        $("#tableData").css("display", "block"):
+        $("#tableData").css("display", "none");
 
+        $('.fa.fa-refresh.fa-spin').css('display','inline-block');
     }
 
     $("#btnInsert").on("click", llamarFuncion);
@@ -58,11 +63,42 @@
     $("#Select").on("change", () => {
         let seleccion = $("#Select option:selected").text();
         console.log("Has seleccionado: - " + $("#Select option:selected").val() + '--' + seleccion);
+        let nom,tel,dir;
         $.ajax({
             type: 'GET',
             url: 'https://restcountries.com/v3.1/name/' + seleccion,
             //'https://5d6d-2806-106e-15-70f9-a4c3-f01-bc33-c341.ngrok.io/MWDispatcher-2.0/toa/solicitarAjusteVelocidad',
-            dataType: 'json'
+            dataType: 'json',
+            beforeSend: ()=>{
+                $('#status').spin({radius:3,width:2,height:2,length:4});
+                nom=$('#txtNombre').val();
+                //let valores=$('input').serialize();
+                let valores=$('input');
+                console.log('valoresJson::::'+JSON.stringify(valores));
+                console.log('valores::::'+valores[0]);
+                
+            },
+            data: {nombre:nom},
+            success:(info)=>{
+                console.log('info::::'+JSON.stringify(info));
+            },error:(jqXHR,estado,error)=>{
+                /*error: timeout,
+                         error,
+                         abort,
+                         parsererror*/
+                console.log('errorError::::'+error);
+                console.log('estadoError::::'+estado);
+                console.log('jqXHRError::::'+jqXHR);
+            },complete:(jqXHR,estado)=>{
+                /*estado: success,
+                         notmodified,
+                         timeout,
+                         error,
+                         abort,
+                         parsererror*/
+                console.log('estadoComplete::::'+estado);
+                console.log('jqXHRComplete::::'+jqXHR);
+            },timeout:10000
         }).done((data) => {
 
             let datos = data;
@@ -108,7 +144,7 @@
 
                 $('#tblRegistros').append(content); */
             }
-
+            $('.fa.fa-refresh.fa-spin').css('display','none');
             console.log('data:::' + data);
         }).fail(() => {
             console.log("Fallo");
@@ -134,10 +170,35 @@
             modems = '';
         }
         //modems = ['3  1-    2','  QW'];
-        return modems.toString().replace(/ /g, "");
+        return modems.toString().replace(/,/g, ",\n");
     }
 
     var myStr = $(".original").text();
     var trimStr = $.trim(myStr);
     $(".trimmed").html(trimStr);
+
+    /* $(document).ready(function(){
+        $('form').submit(function(e){
+            e.preventDefault();
+
+            let dataForm=$(this).serializeArray();
+
+            $.ajax({
+                url: 'process.php',
+                type: 'post',
+                dataType: 'json',
+                data: dataForm,
+                beforeSend: ()=>{
+                    $('.fa').css('display','inline');
+                }
+            }).done(()=>{
+
+            }).fail(()=>{
+
+            }).always(()=>{
+                $('.fa').hide();
+            })
+        })
+    }) */
+   
 })();
