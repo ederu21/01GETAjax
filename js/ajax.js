@@ -1,8 +1,7 @@
 (function () {
     swal("Texto del mensaje",{
         buttons: true,
-        timer: 10000,
-        background-color: rgba(43, 165, 137, 0.45),
+        timer: 10000
       });
     $.ajax({
         type: 'GET',
