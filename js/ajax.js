@@ -77,10 +77,12 @@
                 console.log('valores::::'+valores[0]);
                 
             },
+            //datos a enviar a la peticion
             data: {nombre:nom},
             success:(info)=>{
                 console.log('info::::'+JSON.stringify(info));
-            },error:(jqXHR,estado,error)=>{
+            },
+            error:(jqXHR,estado,error)=>{
                 /*error: timeout,
                          error,
                          abort,
@@ -88,7 +90,8 @@
                 console.log('errorError::::'+error);
                 console.log('estadoError::::'+estado);
                 console.log('jqXHRError::::'+jqXHR);
-            },complete:(jqXHR,estado)=>{
+            },
+            complete:(jqXHR,estado)=>{
                 /*estado: success,
                          notmodified,
                          timeout,
@@ -97,7 +100,8 @@
                          parsererror*/
                 console.log('estadoComplete::::'+estado);
                 console.log('jqXHRComplete::::'+jqXHR);
-            },timeout:10000
+            },
+            timeout:10000
         }).done((data) => {
 
             let datos = data;
@@ -144,7 +148,7 @@
                 $('#tblRegistros').append(content); */
             }
             $('.fa.fa-refresh.fa-spin').css('display','none');
-            console.log('data:::' + data);
+            console.log('data***:::' + data);
         }).fail(() => {
             console.log("Fallo");
         }
